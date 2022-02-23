@@ -33,6 +33,13 @@ public class RecipeController {
         }
     }
 
+    @GetMapping("/recipes/category/{category}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Recipe> getRecipesByCategory(@PathVariable String category) {
+        System.out.println("Getting Recipes By Category!!");
+        return recipeRepo.findAllRecipesByCategory(category);
+    }
+
     @PutMapping("/recipes")
     @ResponseStatus(HttpStatus.OK)
     public void updateRecipe(@RequestBody Recipe recipe) {

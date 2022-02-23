@@ -16,7 +16,6 @@ public class RatingController {
     RatingRepository ratingRepo;
 
     @PutMapping("/ratings")
-
     public void updateRating(@RequestBody Rating rating) {
 
         ratingRepo.save(rating);
@@ -46,4 +45,8 @@ public class RatingController {
         return ratingRepo.findAllRatingsByRecipeId(id);
     }
 
+    @DeleteMapping("/ratings/{id}")
+    public void deleteRating(@PathVariable Integer id) {
+        ratingRepo.deleteById(id);
+    }
 }
