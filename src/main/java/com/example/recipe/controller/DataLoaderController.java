@@ -9,6 +9,7 @@ import com.example.recipe.repository.PrepStepRepository;
 import com.example.recipe.repository.RatingRepository;
 import com.example.recipe.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +38,7 @@ public class DataLoaderController {
         this.ratingRepo = ratingRepo;
     }
 
+    @CrossOrigin("http://localhost:3000")
     @RequestMapping(value = "/load-data", method = RequestMethod.GET)
     public void loadData() {
         Recipe recipe = new Recipe();
