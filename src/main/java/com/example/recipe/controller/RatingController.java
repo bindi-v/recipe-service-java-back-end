@@ -15,12 +15,14 @@ public class RatingController {
     @Autowired
     RatingRepository ratingRepo;
 
+    @CrossOrigin("http://localhost:3000")
     @PutMapping("/ratings")
     public void updateRating(@RequestBody Rating rating) {
 
         ratingRepo.save(rating);
     }
 
+    @CrossOrigin("http://localhost:3000")
     @PostMapping("/ratings")
     @ResponseStatus(HttpStatus.CREATED)
     public Rating addRating(@RequestBody Rating rating) {
@@ -28,6 +30,7 @@ public class RatingController {
         return ratingRepo.save(rating);
     }
 
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("/ratings/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Rating getRatingById(@PathVariable Integer id) {
@@ -39,12 +42,14 @@ public class RatingController {
         }
     }
 
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("/ratings/recipe/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<Rating> getRatingsByRecipe(@PathVariable Integer id) {
         return ratingRepo.findAllRatingsByRecipeId(id);
     }
 
+    @CrossOrigin("http://localhost:3000")
     @DeleteMapping("/ratings/{id}")
     public void deleteRating(@PathVariable Integer id) {
         ratingRepo.deleteById(id);

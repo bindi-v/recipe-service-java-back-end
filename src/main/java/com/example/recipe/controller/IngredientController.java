@@ -15,12 +15,14 @@ public class IngredientController {
     @Autowired
     IngredientRepository repo;
 
+    @CrossOrigin("http://localhost:3000")
     @PostMapping("/ingredients")
     @ResponseStatus(HttpStatus.CREATED)
     public Ingredient addIngredient(@RequestBody Ingredient ingredient) {
         return repo.save(ingredient);
     }
 
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("/ingredients/{id}")
     public Ingredient getIngredient(@PathVariable Integer id) {
         Optional<Ingredient> returnVal = repo.findById(id);
@@ -31,16 +33,19 @@ public class IngredientController {
         }
     }
 
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("/ingredients/recipe/{id}")
     public List<Ingredient> getIngredientsByRecipe(@PathVariable Integer id) {
         return repo.findAllIngredientsByRecipeId(id);
     }
 
+    @CrossOrigin("http://localhost:3000")
     @PutMapping("/ingredients")
     public void updateIngredient(@RequestBody Ingredient ingredient) {
         repo.save(ingredient);
     }
 
+    @CrossOrigin("http://localhost:3000")
     @DeleteMapping("/ingredients/{id}")
     public void deleteIngredient(@PathVariable Integer id) {
         repo.deleteById(id);

@@ -16,6 +16,7 @@ public class PrepStepController {
     @Autowired
     PrepStepRepository prepStepRepo;
 
+    @CrossOrigin("http://localhost:3000")
     @PutMapping("/prepsteps")
     @ResponseStatus(HttpStatus.OK)
     public void updatePrepSteps(@RequestBody PrepStep prepStep) {
@@ -23,6 +24,7 @@ public class PrepStepController {
         prepStepRepo.save(prepStep);
     }
 
+    @CrossOrigin("http://localhost:3000")
     @PostMapping("/prepsteps")
     @ResponseStatus(HttpStatus.CREATED)
     public PrepStep addPrepSteps(@RequestBody PrepStep prepStep) {
@@ -30,6 +32,7 @@ public class PrepStepController {
         return prepStepRepo.save(prepStep);
     }
 
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("/prepsteps/{id}")
     @ResponseStatus(HttpStatus.OK)
     public PrepStep getPrepStepsById(@PathVariable Integer id) {
@@ -42,12 +45,14 @@ public class PrepStepController {
 
     }
 
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("/prepsteps/recipe/{id}")
     @ResponseStatus(HttpStatus.OK)
     public List<PrepStep> getPrepStepsByRecipe(@PathVariable Integer id) {
         return prepStepRepo.findAllPrepStepsByRecipeId(id);
     }
 
+    @CrossOrigin("http://localhost:3000")
     @DeleteMapping("/prepsteps/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deletePrepSteps(@PathVariable Integer id) {

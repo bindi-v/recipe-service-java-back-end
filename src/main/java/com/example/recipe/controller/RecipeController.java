@@ -15,6 +15,7 @@ public class RecipeController {
     @Autowired
     RecipeRepository recipeRepo;
 
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("/recipes")
     @ResponseStatus(HttpStatus.OK)
     public List<Recipe> getAllRecipes() {
@@ -22,6 +23,7 @@ public class RecipeController {
         return recipeRepo.findAll();
     }
 
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("/recipes/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Recipe getRecipeById(@PathVariable Integer id) {
@@ -33,6 +35,7 @@ public class RecipeController {
         }
     }
 
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("/recipes/category/{category}")
     @ResponseStatus(HttpStatus.OK)
     public List<Recipe> getRecipesByCategory(@PathVariable String category) {
@@ -40,6 +43,7 @@ public class RecipeController {
         return recipeRepo.findAllRecipesByCategory(category);
     }
 
+    @CrossOrigin("http://localhost:3000")
     @PutMapping("/recipes")
     @ResponseStatus(HttpStatus.OK)
     public void updateRecipe(@RequestBody Recipe recipe) {
@@ -47,6 +51,7 @@ public class RecipeController {
         recipeRepo.save(recipe);
     }
 
+    @CrossOrigin("http://localhost:3000")
     @PostMapping("/recipes")
     @ResponseStatus(HttpStatus.CREATED)
     public Recipe addRecipe(@RequestBody Recipe recipe) {
@@ -54,6 +59,7 @@ public class RecipeController {
         return recipeRepo.save(recipe);
     }
 
+    @CrossOrigin("http://localhost:3000")
     @DeleteMapping("/recipes/{id}")
     public void deleteRecipe(@PathVariable Integer id) {
 
